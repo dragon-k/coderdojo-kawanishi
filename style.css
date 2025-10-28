@@ -1,0 +1,170 @@
+/* ベース設定 */
+body {
+  margin: 0;
+  font-family: "Noto Sans JP", sans-serif;
+  background-color: #FFFFFF;
+  color: #333;
+  line-height: 1.7;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+  color: #333;
+}
+
+/* レイアウト基礎 */
+.container {
+  width: 90%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+/* ヘッダー */
+.site-header {
+  background-color: #B8E0C2; /* 薄緑 */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 0;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.nav a:hover {
+  color: #5EB0E5; /* 淡い青 */
+}
+
+/* セクション共通 */
+.section {
+  padding: 60px 0;
+}
+
+.section h2 {
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 30px;
+}
+
+/* イベントセクション */
+.event-section {
+  background-color: #F8F8F8;
+}
+
+.event-card {
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 30px;
+  text-align: center;
+}
+
+.event-card p {
+  margin: 10px 0;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #A7D8F5;
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: #5EB0E5;
+  color: #fff;
+}
+
+/* 概要セクション */
+.about-section {
+  background-color: #FFFFFF;
+}
+
+.features {
+  list-style: disc;
+  padding-left: 20px;
+  margin-top: 20px;
+}
+
+/* 主催者情報 */
+.organizer-section {
+  background-color: #F6C9A1; /* 肌色寄り */
+  border-radius: 20px;
+}
+
+.organizer-section a {
+  color: #333;
+}
+
+.social-links {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.social-btn {
+  background-color: #A7D8F5;
+  color: #333;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.social-btn:hover {
+  background-color: #5EB0E5;
+  color: #fff;
+}
+
+/* フッター */
+.site-footer {
+  background-color: #B8E0C2;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.9rem;
+}
+
+.site-footer .small {
+  color: #666;
+  font-size: 0.8rem;
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+  .header-inner {
+    flex-direction: column;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+}
