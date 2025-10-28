@@ -1,170 +1,108 @@
-/* ベース設定 */
+/* ベース */
 body {
-  margin: 0;
   font-family: "Noto Sans JP", sans-serif;
-  background-color: #FFFFFF;
+  margin: 0;
+  background-color: #f9f9f9;
   color: #333;
-  line-height: 1.7;
+  scroll-behavior: smooth;
 }
 
-h1, h2, h3 {
-  font-weight: 600;
-  color: #333;
+header {
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-/* レイアウト基礎 */
 .container {
   width: 90%;
-  max-width: 960px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 40px 0;
 }
 
 /* ヘッダー */
-.site-header {
-  background-color: #B8E0C2; /* 薄緑 */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.header-inner {
+.header-container {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 15px 0;
+  align-items: center;
 }
 
 .logo {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #333;
+  font-size: 1.6em;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-left: 10px;
 }
 
-.nav ul {
+nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 1.5rem;
+  gap: 20px;
 }
 
-.nav a {
+nav a {
   text-decoration: none;
   color: #333;
-  font-weight: 500;
+  font-weight: bold;
+  transition: color 0.2s;
 }
 
-.nav a:hover {
-  color: #5EB0E5; /* 淡い青 */
+nav a:hover {
+  color: #0099cc;
 }
 
 /* セクション共通 */
 .section {
-  padding: 60px 0;
+  padding: 60px 20px;
+  background-color: #fff;
+  margin: 30px 0;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.05);
 }
 
-.section h2 {
-  text-align: center;
-  font-size: 1.6rem;
-  margin-bottom: 30px;
-}
-
-/* イベントセクション */
-.event-section {
-  background-color: #F8F8F8;
-}
-
-.event-card {
-  background-color: #FFFFFF;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  padding: 30px;
+.center-text {
   text-align: center;
 }
 
-.event-card p {
-  margin: 10px 0;
-}
-
-.btn {
-  display: inline-block;
-  background-color: #A7D8F5;
-  color: #333;
-  padding: 10px 20px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  margin-top: 10px;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background-color: #5EB0E5;
-  color: #fff;
-}
-
-/* 概要セクション */
-.about-section {
-  background-color: #FFFFFF;
-}
-
-.features {
-  list-style: disc;
-  padding-left: 20px;
-  margin-top: 20px;
-}
-
-/* 主催者情報 */
-.organizer-section {
-  background-color: #F6C9A1; /* 肌色寄り */
-  border-radius: 20px;
-}
-
-.organizer-section a {
-  color: #333;
-}
-
-.social-links {
-  margin-top: 20px;
+/* 次回開催 */
+.event-nav {
   display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
 }
 
-.social-btn {
-  background-color: #A7D8F5;
-  color: #333;
+.event-nav button {
+  background-color: #a8dadc;
+  border: none;
+  border-radius: 8px;
   padding: 8px 16px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 600;
+  cursor: pointer;
+  font-size: 1.2em;
+  transition: background-color 0.3s;
 }
 
-.social-btn:hover {
-  background-color: #5EB0E5;
-  color: #fff;
+.event-nav button:hover {
+  background-color: #76c7c0;
+}
+
+#eventInfo {
+  background-color: #f1faee;
+  padding: 20px;
+  border-radius: 10px;
+  min-width: 240px;
+  text-align: center;
 }
 
 /* フッター */
-.site-footer {
-  background-color: #B8E0C2;
+footer {
   text-align: center;
   padding: 20px 0;
-  font-size: 0.9rem;
-}
-
-.site-footer .small {
-  color: #666;
-  font-size: 0.8rem;
-}
-
-/* レスポンシブ */
-@media (max-width: 768px) {
-  .header-inner {
-    flex-direction: column;
-  }
-
-  .nav ul {
-    flex-direction: column;
-    align-items: center;
-  }
+  background-color: #f5f5f5;
+  color: #555;
 }
