@@ -1,170 +1,122 @@
-/* ベース設定 */
+:root {
+  --main-bg: #fdfdfd;
+  --accent: #a8dadc; /* 水色 */
+  --sub-accent: #b8e0d2; /* 薄緑 */
+  --text: #333;
+  --soft-beige: #f5ede0;
+}
+
 body {
-  margin: 0;
   font-family: "Noto Sans JP", sans-serif;
-  background-color: #FFFFFF;
-  color: #333;
-  line-height: 1.7;
-}
-
-h1, h2, h3 {
-  font-weight: 600;
-  color: #333;
-}
-
-/* レイアウト基礎 */
-.container {
-  width: 90%;
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 40px 0;
+  margin: 0;
+  background: var(--main-bg);
+  color: var(--text);
+  line-height: 1.8;
 }
 
 /* ヘッダー */
-.site-header {
-  background-color: #B8E0C2; /* 薄緑 */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+header {
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
-.header-inner {
+.header-container {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 15px 0;
+  align-items: center;
+  padding: 0.8rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .logo {
+  margin: 0;
   font-size: 1.4rem;
-  font-weight: 700;
-  color: #333;
+  color: var(--text);
+  letter-spacing: 1px;
+  transform: translateX(-10%);
 }
 
-.nav ul {
+nav ul {
   list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
   gap: 1.5rem;
+  margin: 0;
+  padding: 0;
 }
 
-.nav a {
+nav a {
   text-decoration: none;
-  color: #333;
-  font-weight: 500;
+  color: var(--text);
+  transition: color 0.2s;
 }
 
-.nav a:hover {
-  color: #5EB0E5; /* 淡い青 */
+nav a:hover {
+  color: var(--accent);
 }
 
 /* セクション共通 */
-.section {
-  padding: 60px 0;
+section {
+  padding: 4rem 1rem;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.section h2 {
+/* イベントカード */
+.events-section {
+  background: var(--soft-beige);
   text-align: center;
-  font-size: 1.6rem;
-  margin-bottom: 30px;
-}
-
-/* イベントセクション */
-.event-section {
-  background-color: #F8F8F8;
 }
 
 .event-card {
-  background-color: #FFFFFF;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  padding: 30px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5rem;
+  gap: 1rem;
 }
 
-.event-card p {
-  margin: 10px 0;
+.nav-btn {
+  background: var(--accent);
+  border: none;
+  color: white;
+  font-size: 1.4rem;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.nav-btn:hover {
+  background: var(--sub-accent);
 }
 
-.btn {
-  display: inline-block;
-  background-color: #A7D8F5;
-  color: #333;
-  padding: 10px 20px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  margin-top: 10px;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background-color: #5EB0E5;
-  color: #fff;
+.event-info {
+  background: white;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 /* 概要セクション */
-.about-section {
-  background-color: #FFFFFF;
-}
-
-.features {
-  list-style: disc;
-  padding-left: 20px;
-  margin-top: 20px;
+.about-section h2, .about-section p {
+  text-align: center;
 }
 
 /* 主催者情報 */
 .organizer-section {
-  background-color: #F6C9A1; /* 肌色寄り */
-  border-radius: 20px;
-}
-
-.organizer-section a {
-  color: #333;
-}
-
-.social-links {
-  margin-top: 20px;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.social-btn {
-  background-color: #A7D8F5;
-  color: #333;
-  padding: 8px 16px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.social-btn:hover {
-  background-color: #5EB0E5;
-  color: #fff;
+  background: var(--sub-accent);
+  border-radius: 1rem;
+  padding: 3rem 1rem;
+  text-align: center;
 }
 
 /* フッター */
-.site-footer {
-  background-color: #B8E0C2;
+footer {
+  background: var(--accent);
   text-align: center;
-  padding: 20px 0;
-  font-size: 0.9rem;
-}
-
-.site-footer .small {
-  color: #666;
-  font-size: 0.8rem;
-}
-
-/* レスポンシブ */
-@media (max-width: 768px) {
-  .header-inner {
-    flex-direction: column;
-  }
-
-  .nav ul {
-    flex-direction: column;
-    align-items: center;
-  }
+  padding: 1rem;
+  color: white;
 }
