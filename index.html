@@ -1,86 +1,210 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CoderDojo川西</title>
-  <link rel="stylesheet" href="assets/style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-bg: #ffffff;
+      --accent: #6fc1b4;
+      --light-blue: #c8e9f0;
+      --beige: #f7f0e8;
+      --gray: #f4f4f4;
+      --text-dark: #333;
+    }
+
+    html {
+      scroll-behavior: smooth; /* スムーズスクロール */
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      margin: 0;
+      background-color: var(--main-bg);
+      color: var(--text-dark);
+    }
+
+    /* ==== ヘッダー ==== */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      background-color: var(--light-blue);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: var(--accent);
+    }
+
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    /* ==== イベントセクション ==== */
+    section#events {
+      background-color: var(--beige);
+      padding: 3rem 1rem;
+      text-align: center;
+    }
+
+    .event-card {
+      display: inline-block;
+      background-color: #fff;
+      border-radius: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      width: 300px;
+      margin: 1rem;
+    }
+
+    .event-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    button.nav-btn {
+      background-color: var(--accent);
+      border: none;
+      color: white;
+      font-size: 1rem;
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+    }
+
+    button.nav-btn:hover {
+      background-color: #56a79b;
+    }
+
+    /* ==== 概要セクション ==== */
+    section#about {
+      padding: 3rem 2rem;
+      background-color: var(--gray);
+      text-align: center;
+    }
+
+    section#about h2 {
+      color: var(--accent);
+    }
+
+    /* ==== 主催者情報 ==== */
+    section#organizer {
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    /* ==== フッター ==== */
+    footer {
+      background-color: var(--light-blue);
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 2rem;
+    }
+  </style>
 </head>
 <body>
-  <!-- ヘッダー -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <h1 class="logo">CoderDojo川西</h1>
-      <nav class="nav">
-        <ul>
-          <li><a href="#events">開催情報</a></li>
-          <li><a href="#about">概要</a></li>
-          <li><a href="#organizer">主催者</a></li>
-          <li><a href="#contact">お問い合わせ</a></li>
-        </ul>
-      </nav>
-    </div>
+  <header>
+    <h1>CoderDojo川西</h1>
+    <nav>
+      <a href="#events">開催情報</a>
+      <a href="#about">CoderDojoとは</a>
+      <a href="#organizer">主催者情報</a>
+    </nav>
   </header>
 
-  <!-- 直近の開催イベント -->
-  <section id="events" class="section event-section">
-    <div class="container">
-      <h2>次回の開催</h2>
-      <div class="event-card">
-        <p class="event-date">📅 日時：2025年11月16日（日） 13:30〜15:30</p>
-        <p class="event-place">📍 場所：川西市立中央公民館（会議室2）</p>
-        <a href="#" class="btn">参加申し込みはこちら</a>
-      </div>
+  <section id="events">
+    <h2>次回の開催</h2>
+    <div class="event-nav">
+      <button class="nav-btn" id="prevMonth">&lt; 前月</button>
+      <button class="nav-btn" id="nextMonth">次月 &gt;</button>
     </div>
+    <div id="eventList"></div>
   </section>
 
-  <!-- CoderDojo概要と川西の特色 -->
-  <section id="about" class="section about-section">
-    <div class="container">
-      <h2>CoderDojoとは？</h2>
-      <p>
-        CoderDojo（コーダー道場）は、世界各地で開かれている無料のプログラミングクラブです。<br>
-        子どもたちが自分のペースでプログラミングやものづくりを学び、互いに刺激し合う場所です。
-      </p>
-
-      <h3>CoderDojo川西の特色</h3>
-      <ul class="features">
-        <li>ScratchやMinecraftなど、好きなテーマで自由に制作</li>
-        <li>メンター（ボランティア）が優しくサポート</li>
-        <li>「つくる楽しさ」を大切にしたアットホームな雰囲気</li>
-      </ul>
-    </div>
+  <section id="about">
+    <h2>CoderDojoとは？</h2>
+    <p>CoderDojoは、子どもたちがプログラミングを学び、自由な発想で作品を作る場所です。</p>
+    <p>CoderDojo川西では、初心者でも気軽に参加できるアットホームな雰囲気を大切にしています。</p>
+    <p>一緒に楽しく学び、考える力を育てていきましょう！</p>
   </section>
 
-  <!-- 主催者情報 -->
-  <section id="organizer" class="section organizer-section">
-    <div class="container">
-      <h2>主催者情報</h2>
-      <p>
-        本サイトは <strong>CoderDojo川西</strong> の運営チームによって管理されています。<br>
-        私たちは、地域の子どもたちに「自分で考え、つくり、学ぶ」楽しさを伝えることを目指しています。
-      </p>
-      <p>
-        会場協力：川西市立中央公民館<br>
-        問い合わせ：<a href="mailto:info@coderdojo-kawanishi.jp">info@coderdojo-kawanishi.jp</a>
-      </p>
-      <div class="social-links">
-        <a href="#" class="social-btn">X（Twitter）</a>
-        <a href="#" class="social-btn">Instagram</a>
-        <a href="#" class="social-btn">GitHub</a>
-      </div>
-    </div>
+  <section id="organizer">
+    <h2>主催者情報</h2>
+    <p>代表：山田 太郎</p>
+    <p>連絡先：info@coderdojo-kawanishi.jp</p>
+    <p>会場：川西市民センター</p>
   </section>
 
-  <!-- フッター -->
-  <footer class="site-footer" id="contact">
-    <div class="container">
-      <p>© 2025 CoderDojo Kawanishi</p>
-      <p class="small">このサイトはGitHub Pagesで公開されています。</p>
-    </div>
+  <footer>
+    <p>&copy; 2025 CoderDojo Kawanishi. All Rights Reserved.</p>
   </footer>
+
+  <script>
+    const today = new Date();
+    let currentMonth = today.getMonth();
+    const eventList = document.getElementById('eventList');
+
+    const events = [
+      { title: "11月のDojo", date: "2025-11-15", place: "川西市民センター" },
+      { title: "12月のDojo", date: "2025-12-13", place: "川西市民センター" },
+      { title: "1月のDojo",  date: "2026-01-17", place: "川西市民センター" },
+    ];
+
+    function renderEvents() {
+      eventList.innerHTML = '';
+      const currentYear = today.getFullYear();
+      const visibleMonth = (currentMonth + 12) % 12;
+      const visibleYear = currentYear + Math.floor(currentMonth / 12);
+
+      const visibleEvents = events.filter(ev => {
+        const evDate = new Date(ev.date);
+        return evDate.getMonth() === visibleMonth && evDate >= today;
+      });
+
+      if (visibleEvents.length === 0) {
+        eventList.innerHTML = '<p>今月の開催予定はありません。</p>';
+      } else {
+        visibleEvents.forEach(ev => {
+          const el = document.createElement('div');
+          el.classList.add('event-card');
+          el.innerHTML = `
+            <h3>${ev.title}</h3>
+            <p>${new Date(ev.date).toLocaleDateString('ja-JP')} 開催</p>
+            <p>会場：${ev.place}</p>
+          `;
+          eventList.appendChild(el);
+        });
+      }
+    }
+
+    document.getElementById('prevMonth').addEventListener('click', () => {
+      currentMonth--;
+      renderEvents();
+    });
+
+    document.getElementById('nextMonth').addEventListener('click', () => {
+      currentMonth++;
+      renderEvents();
+    });
+
+    renderEvents();
+  </script>
 </body>
 </html>
