@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CoderDojo川西</title>
-  <link rel="stylesheet" href="assets/style.css" />
+  <link rel="stylesheet" href="style.css" /> 
   <script defer>
     // スムーススクロール
     document.addEventListener("DOMContentLoaded", () => {
@@ -18,10 +18,11 @@
       });
 
       // 開催イベント切り替え
+      // 開催イベントをDateオブジェクトで管理し、現在より未来のイベントのみを表示対象とする
       const events = [
-        { month: "今月", date: "11月10日(日)", place: "川西市立中央図書館 3階" },
-        { month: "来月", date: "12月8日(日)", place: "川西市立中央図書館 3階" },
-        { month: "再来月", date: "1月12日(日)", place: "川西市立中央図書館 3階" }
+        { dateObj: new Date(new Date().getFullYear(), 10, 10), month: "今月", date: "11月10日(日)", place: "川西市立中央図書館 3階" },
+        { dateObj: new Date(new Date().getFullYear(), 11, 8), month: "来月", date: "12月8日(日)", place: "川西市立中央図書館 3階" },
+        { dateObj: new Date(new Date().getFullYear() + 1, 0, 12), month: "再来月", date: "1月12日(日)", place: "川西市立中央図書館 3階" }
       ];
 
       let currentIndex = 0;
@@ -29,25 +30,38 @@
       const dateEl = document.getElementById("event-date");
       const placeEl = document.getElementById("event-place");
 
+      // 今日より後の日付のイベントのみをフィルタリング
+      const today = new Date();
+      today.setHours(0, 0, 0, 0); // 時刻を無視するため
+
+      const futureEvents = events.filter(ev => ev.dateObj >= today);
+
       function updateEvent() {
-        const today = new Date();
-        const filtered = events.filter(ev => {
-          // 未来日だけ残す（今回は例としてすべて表示）
-          return true;
-        });
-        const ev = filtered[currentIndex % filtered.length];
+        if (futureEvents.length === 0) {
+            monthEl.textContent = "未定";
+            dateEl.textContent = "次回の開催は未定です";
+            placeEl.textContent = "しばらくお待ちください";
+            return;
+        }
+        
+        // futureEventsの配列内でループ
+        const ev = futureEvents[currentIndex % futureEvents.length];
         monthEl.textContent = ev.month;
         dateEl.textContent = ev.date;
         placeEl.textContent = ev.place;
       }
 
       document.getElementById("prev-btn").addEventListener("click", () => {
-        currentIndex = (currentIndex - 1 + events.length) % events.length;
-        updateEvent();
+        if (futureEvents.length > 0) {
+            currentIndex = (currentIndex - 1 + futureEvents.length) % futureEvents.length;
+            updateEvent();
+        }
       });
       document.getElementById("next-btn").addEventListener("click", () => {
-        currentIndex = (currentIndex + 1) % events.length;
-        updateEvent();
+        if (futureEvents.length > 0) {
+            currentIndex = (currentIndex + 1) % futureEvents.length;
+            updateEvent();
+        }
       });
 
       updateEvent();
@@ -55,7 +69,6 @@
   </script>
 </head>
 <body>
-  <!-- ヘッダー -->
   <header>
     <div class="container header-container">
       <h1 class="logo">CoderDojo川西</h1>
@@ -69,7 +82,6 @@
     </div>
   </header>
 
-  <!-- 開催イベント -->
   <section id="events" class="events-section">
     <h2>次回の開催</h2>
     <div class="event-card">
@@ -83,7 +95,6 @@
     </div>
   </section>
 
-  <!-- CoderDojo概要 -->
   <section id="about" class="about-section">
     <h2>CoderDojoとは？</h2>
     <p>
@@ -100,7 +111,6 @@
     </p>
   </section>
 
-  <!-- 主催者情報 -->
   <section id="organizer" class="organizer-section">
     <h2>主催者情報</h2>
     <p>
@@ -110,7 +120,6 @@
     </p>
   </section>
 
-  <!-- フッター -->
   <footer>
     <p>© 2025 CoderDojo Kawanishi</p>
   </footer>
