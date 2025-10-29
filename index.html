@@ -19,35 +19,16 @@
 
       // 開催イベント切り替え（日付チェックロジックを含む）
       const events = [
-        // 実際の日付、画像パスに修正してください
-        { 
-            dateObj: new Date(new Date().getFullYear(), 10, 10), 
-            month: "今月", 
-            date: "11月10日(日)", 
-            place: "川西市立中央図書館 3階",
-            image: "images/event1.jpg" // 画像のパスを追加
-        },
-        { 
-            dateObj: new Date(new Date().getFullYear(), 11, 8), 
-            month: "来月", 
-            date: "12月8日(日)", 
-            place: "川西市立中央図書館 3階",
-            image: "images/event2.jpg" // 画像のパスを追加
-        },
-        { 
-            dateObj: new Date(new Date().getFullYear() + 1, 0, 12), 
-            month: "再来月", 
-            date: "1月12日(日)", 
-            place: "川西市立中央図書館 3階",
-            image: "images/event3.jpg" // 画像のパスを追加
-        }
+        // 実際の日付に修正してください
+        { dateObj: new Date(new Date().getFullYear(), 10, 10), month: "今月", date: "11月10日(日)", place: "川西市立中央図書館 3階" },
+        { dateObj: new Date(new Date().getFullYear(), 11, 8), month: "来月", date: "12月8日(日)", place: "川西市立中央図書館 3階" },
+        { dateObj: new Date(new Date().getFullYear() + 1, 0, 12), month: "再来月", date: "1月12日(日)", place: "川西市立中央図書館 3階" }
       ];
 
       let currentIndex = 0;
       const monthEl = document.getElementById("month");
       const dateEl = document.getElementById("event-date");
       const placeEl = document.getElementById("event-place");
-      const eventImageEl = document.getElementById("event-image"); // 画像要素を追加
       const nextEventLink = document.getElementById("next-event-link");
 
       const today = new Date();
@@ -60,9 +41,7 @@
             monthEl.textContent = "未定";
             dateEl.textContent = "次回の開催は未定です";
             placeEl.textContent = "しばらくお待ちください";
-            eventImageEl.src = ""; // 画像をクリア
-            eventImageEl.style.display = 'none'; // 画像を非表示
-            nextEventLink.style.display = 'none';
+            nextEventLink.style.display = 'none'; // イベントがない場合はボタンを非表示
             return;
         }
         
@@ -70,8 +49,6 @@
         monthEl.textContent = ev.month;
         dateEl.textContent = ev.date;
         placeEl.textContent = ev.place;
-        eventImageEl.src = ev.image; // 画像のパスを設定
-        eventImageEl.style.display = 'block'; // 画像を表示
         nextEventLink.style.display = 'inline-block';
       }
 
@@ -146,9 +123,6 @@
       <div class="event-card">
         <button id="prev-btn" class="nav-btn">◀</button>
         <div class="event-info">
-          <div class="event-image-container">
-            <img id="event-image" src="" alt="開催イベントのイメージ" />
-          </div>
           <h3 id="month" class="event-month"></h3>
           <p id="event-date" class="event-detail"></p>
           <p id="event-place" class="event-detail"></p>
