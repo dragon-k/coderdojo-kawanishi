@@ -32,12 +32,12 @@ header {
   margin: 0 auto;
 }
 
+/* 改善: ロゴを左端に寄せる（transformを削除） */
 .logo {
   margin: 0;
   font-size: 1.4rem;
   color: var(--text);
   letter-spacing: 1px;
-  transform: translateX(-10%);
 }
 
 nav ul {
@@ -101,8 +101,13 @@ section {
 }
 
 /* 概要セクション */
+/* 改善: CoderDojoとは？以下の文章をすべて中央揃えにする */
+.about-section {
+    text-align: center; 
+}
 .about-section h2, .about-section p {
-  text-align: center;
+  /* text-align: center; は親要素の.about-sectionに設定したので不要 */
+  /* 必要に応じて個別の調整は残しても良いが、今回は削除 */
 }
 
 /* 主催者情報 */
