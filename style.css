@@ -1,8 +1,11 @@
 :root {
-  /* ... (他の変数) ... */
+  --main-bg: #fdfdfd;
   --accent-blue: #008080; /* CoderDojoらしい青緑 */
-  --text-light: #fdfdfd; /* 文字色を白に維持 */
-  /* ... (他の変数) ... */
+  --accent-light: #52b8b8;
+  --text-dark: #333;
+  --text-light: #fdfdfd;
+  --section-light: #e6f3f3; /* 薄い青背景 */
+  --shadow: rgba(0,0,0,0.1);
 }
 
 /* 基本スタイル */
@@ -89,21 +92,8 @@ section {
 
 /* ヒーローセクション */
 .hero-section {
-    /* 1. 画像が読み込めなかった場合の代替背景色を設定 */
-    background-color: var(--accent-blue);
-    
-    /* 2. 背景画像を最優先で設定 */
-    /* ***注意: 画像のファイルパスを正しく修正してください*** */
-    /* (例1: style.cssと同じ場所) */
-    background-image: url('Images/coderdojo_kawanishi.jpg'); 
-    /* (例2: style.cssの場所から見て、親フォルダにあるimages/フォルダ内) */
-    /* background-image: url('../images/coderdojo_kawanishi.jpg'); */ 
-    
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    
-    color: var(--text-light); 
+    background: var(--accent-blue);
+    color: var(--text-light);
     padding: 6rem 1rem;
 }
 
@@ -112,25 +102,11 @@ section {
     line-height: 1.4;
     margin-bottom: 1.5rem;
     font-weight: bold;
-    /* 文字の縁取りを再現 */
-    text-shadow: 
-        -1px -1px 0 var(--accent-blue), /* 左上 */
-        1px -1px 0 var(--accent-blue),  /* 右上 */
-        -1px 1px 0 var(--accent-blue),   /* 左下 */
-        1px 1px 0 var(--accent-blue),    /* 右下 */
-        0px 0px 8px rgba(0, 0, 0, 0.6); /* 濃い影 */
 }
 
 .hero-subtitle {
     font-size: 1.2rem;
     margin-bottom: 3rem;
-    /* 文字の縁取りを再現 */
-    text-shadow: 
-        -0.5px -0.5px 0 var(--accent-blue), 
-        0.5px -0.5px 0 var(--accent-blue),  
-        -0.5px 0.5px 0 var(--accent-blue),   
-        0.5px 0.5px 0 var(--accent-blue),
-        0px 0px 5px rgba(0, 0, 0, 0.5); /* 濃い影 */
 }
 
 /* CTAボタン */
@@ -179,6 +155,7 @@ section {
     margin-top: 0;
 }
 
+
 /* イベントカード */
 .events-section {
   background: white;
@@ -209,15 +186,36 @@ section {
 
 .event-info {
   background: var(--section-light);
-  padding: 1.5rem 3rem;
+  padding: 1.5rem; /* パディングを調整 */
   border-radius: 1rem;
   box-shadow: 0 4px 10px var(--shadow);
-  width: 300px;
+  width: 400px; /* ボックスを大きく */
+  display: flex; /* 写真とテキストを縦に並べるため */
+  flex-direction: column; /* 縦並び */
+  align-items: center; /* 中央揃え */
 }
+
+/* イベント画像コンテナ */
+.event-image-container {
+  width: 100%; /* 親要素の幅いっぱいに */
+  height: 200px; /* 高さの固定（必要に応じて調整） */
+  margin-bottom: 1rem; /* 下にスペース */
+  overflow: hidden; /* 画像がはみ出さないように */
+  border-radius: 0.8rem; /* 角を丸く */
+  box-shadow: 0 2px 5px var(--shadow);
+}
+
+#event-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 画像をコンテナに合わせてトリミング */
+  display: block; /* 余白をなくす */
+}
+
 .event-month {
     font-size: 1.8rem;
     color: var(--accent-blue);
-    margin: 0 0 0.5rem 0;
+    margin: 0.5rem 0 0.5rem 0;
 }
 .event-detail {
     margin: 0.5rem 0;
@@ -262,7 +260,28 @@ footer {
     .card-group {
         flex-direction: column;
     }
-    .event-info {
-        width: 100%;
+    .event-card {
+        flex-direction: column; /* ボタンも縦に並べる */
+        gap: 0.5rem;
     }
+    .event-info {
+        width: 90%; /* モバイルでは幅を調整 */
+        max-width: 350px;
+        padding: 1rem;
+    }
+    .nav-btn {
+        padding: 0.6rem 1rem;
+        font-size: 1.2rem;
+    }
+    .event-image-container {
+        height: 150px; /* モバイルでの画像の高さ */
+    }
+}
+
+.image-center-box {
+    /* 画像などのインライン要素を中央揃え */
+    text-align: center;
+    /* ブロック要素（divなど）を中央揃え */
+    margin-left: auto;
+    margin-right: auto;
 }
