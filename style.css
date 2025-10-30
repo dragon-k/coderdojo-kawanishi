@@ -1,7 +1,8 @@
 :root {
   /* ... (他の変数) ... */
   --accent-blue: #008080; /* CoderDojoらしい青緑 */
-  --overlay-color: rgba(0, 128, 128, 0.7); /* accent-blue (#ffffff) の70%の透過度 */
+  --text-light: #fdfdfd; /* 文字色を白に維持 */
+  /* --overlay-color は不要になるため、削除してもOK */
   /* ... (他の変数) ... */
 }
 
@@ -89,16 +90,17 @@ section {
 
 /* ヒーローセクション */
 .hero-section {
-    /* 修正・追加部分 */
-    background-image: linear-gradient(var(--overlay-color), var(--overlay-color)), 
-                      url('Images/coderdojo_kawanishi.png'); /* 2枚目の写真のファイル名 */
+    /* 修正部分 */
+    background-image: url('coderdojo_kawanishi.jpg'); /* 2枚目の写真のファイル名 */
     background-size: cover;
     background-position: center center;
-    background-blend-mode: multiply; /* 色と画像をブレンドしてフィルター効果を適用 */
+    background-repeat: no-repeat; /* 画像の繰り返しを防ぐ */
+    /* background-blend-mode は削除 */
     color: var(--text-light); /* 文字色を白に維持 */
     padding: 6rem 1rem;
     
-    /* 元の background: var(--accent-blue); は削除またはコメントアウト */
+    /* 背景画像を暗くして文字を見やすくするための代替手段（コメントアウト）
+    /* filter: brightness(70%); */ 
 }
 
 .hero-title {
@@ -106,14 +108,27 @@ section {
     line-height: 1.4;
     margin-bottom: 1.5rem;
     font-weight: bold;
-    /* テキストが画像の上でより見やすくなるようにシャドウを追加 */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); 
+    /* 文字の縁取りを再現（text-shadowを複数重ねる方法） */
+    text-shadow: 
+        -1px -1px 0 var(--accent-blue), /* 左上 */
+        1px -1px 0 var(--accent-blue),  /* 右上 */
+        -1px 1px 0 var(--accent-blue),   /* 左下 */
+        1px 1px 0 var(--accent-blue),    /* 右下 */
+        0px 0px 8px rgba(0, 0, 0, 0.4); /* オプション: 少し影をつけて立体感を出す */
+    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); <= 元のシャドウは削除 */
 }
 
 .hero-subtitle {
     font-size: 1.2rem;
     margin-bottom: 3rem;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    /* 文字の縁取りを再現 */
+    text-shadow: 
+        -0.5px -0.5px 0 var(--accent-blue), 
+        0.5px -0.5px 0 var(--accent-blue),  
+        -0.5px 0.5px 0 var(--accent-blue),   
+        0.5px 0.5px 0 var(--accent-blue),
+        0px 0px 5px rgba(0, 0, 0, 0.3); /* オプション: 少し影をつけて立体感を出す */
+    /* text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); <= 元のシャドウは削除 */
 }
 
 /* CTAボタン */
