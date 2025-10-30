@@ -2,7 +2,6 @@
   /* ... (他の変数) ... */
   --accent-blue: #008080; /* CoderDojoらしい青緑 */
   --text-light: #fdfdfd; /* 文字色を白に維持 */
-  /* --overlay-color は不要になるため、削除してもOK */
   /* ... (他の変数) ... */
 }
 
@@ -90,17 +89,22 @@ section {
 
 /* ヒーローセクション */
 .hero-section {
-    /* 修正部分 */
-    background-image: url('coderdojo_kawanishi.jpg'); /* 2枚目の写真のファイル名 */
+    /* 1. 画像が読み込めなかった場合の代替背景色を設定 */
+    background-color: var(--accent-blue);
+    
+    /* 2. 背景画像を最優先で設定 */
+    /* ***注意: 画像のファイルパスを正しく修正してください*** */
+    /* (例1: style.cssと同じ場所) */
+    background-image: url('Images/coderdojo_kawanishi.jpg'); 
+    /* (例2: style.cssの場所から見て、親フォルダにあるimages/フォルダ内) */
+    /* background-image: url('../images/coderdojo_kawanishi.jpg'); */ 
+    
     background-size: cover;
     background-position: center center;
-    background-repeat: no-repeat; /* 画像の繰り返しを防ぐ */
-    /* background-blend-mode は削除 */
-    color: var(--text-light); /* 文字色を白に維持 */
-    padding: 6rem 1rem;
+    background-repeat: no-repeat;
     
-    /* 背景画像を暗くして文字を見やすくするための代替手段（コメントアウト）
-    /* filter: brightness(70%); */ 
+    color: var(--text-light); 
+    padding: 6rem 1rem;
 }
 
 .hero-title {
@@ -108,14 +112,13 @@ section {
     line-height: 1.4;
     margin-bottom: 1.5rem;
     font-weight: bold;
-    /* 文字の縁取りを再現（text-shadowを複数重ねる方法） */
+    /* 文字の縁取りを再現 */
     text-shadow: 
         -1px -1px 0 var(--accent-blue), /* 左上 */
         1px -1px 0 var(--accent-blue),  /* 右上 */
         -1px 1px 0 var(--accent-blue),   /* 左下 */
         1px 1px 0 var(--accent-blue),    /* 右下 */
-        0px 0px 8px rgba(0, 0, 0, 0.4); /* オプション: 少し影をつけて立体感を出す */
-    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); <= 元のシャドウは削除 */
+        0px 0px 8px rgba(0, 0, 0, 0.6); /* 濃い影 */
 }
 
 .hero-subtitle {
@@ -127,8 +130,7 @@ section {
         0.5px -0.5px 0 var(--accent-blue),  
         -0.5px 0.5px 0 var(--accent-blue),   
         0.5px 0.5px 0 var(--accent-blue),
-        0px 0px 5px rgba(0, 0, 0, 0.3); /* オプション: 少し影をつけて立体感を出す */
-    /* text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); <= 元のシャドウは削除 */
+        0px 0px 5px rgba(0, 0, 0, 0.5); /* 濃い影 */
 }
 
 /* CTAボタン */
