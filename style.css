@@ -1,7 +1,7 @@
 :root {
   /* ... (他の変数) ... */
   --accent-blue: #008080; /* CoderDojoらしい青緑 */
-  --overlay-color: rgba(0, 128, 128, 0.7); /* accent-blue (#008080) の70%の透過度 */
+  --overlay-color: rgba(0, 128, 128, 0.7); /* accent-blue (#ffffff) の70%の透過度 */
   /* ... (他の変数) ... */
 }
 
