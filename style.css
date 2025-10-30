@@ -1,11 +1,8 @@
 :root {
-  --main-bg: #fdfdfd;
+  /* ... (他の変数) ... */
   --accent-blue: #008080; /* CoderDojoらしい青緑 */
-  --accent-light: #52b8b8;
-  --text-dark: #333;
-  --text-light: #fdfdfd;
-  --section-light: #e6f3f3; /* 薄い青背景 */
-  --shadow: rgba(0,0,0,0.1);
+  --overlay-color: rgba(0, 128, 128, 0.7); /* accent-blue (#008080) の70%の透過度 */
+  /* ... (他の変数) ... */
 }
 
 /* 基本スタイル */
@@ -92,9 +89,16 @@ section {
 
 /* ヒーローセクション */
 .hero-section {
-    background: var(--accent-blue);
-    color: var(--text-light);
+    /* 修正・追加部分 */
+    background-image: linear-gradient(var(--overlay-color), var(--overlay-color)), 
+                      url('Images/coderdojo_kawanishi.png'); /* 2枚目の写真のファイル名 */
+    background-size: cover;
+    background-position: center center;
+    background-blend-mode: multiply; /* 色と画像をブレンドしてフィルター効果を適用 */
+    color: var(--text-light); /* 文字色を白に維持 */
     padding: 6rem 1rem;
+    
+    /* 元の background: var(--accent-blue); は削除またはコメントアウト */
 }
 
 .hero-title {
@@ -102,11 +106,14 @@ section {
     line-height: 1.4;
     margin-bottom: 1.5rem;
     font-weight: bold;
+    /* テキストが画像の上でより見やすくなるようにシャドウを追加 */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); 
 }
 
 .hero-subtitle {
     font-size: 1.2rem;
     margin-bottom: 3rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 /* CTAボタン */
