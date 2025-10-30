@@ -70,7 +70,7 @@ nav a:hover {
 
 /* セクション共通 */
 section {
-  padding: 4rem 1rem;
+  padding: 6rem 1rem;
   max-width: 900px;
   margin: 0 auto;
   /* ★修正★ Bootstrapの影響でtext-alignが消えることがあるため、再設定 */
@@ -171,7 +171,7 @@ section {
 .about-section {
     /* ★修正★ 背景色が白にならないよう、元の色を指定 */
     background-color: var(--section-light); /* または var(--sub-accent) など、お好みの色を */
-    padding: 4rem 1rem; /* 既にsectionで定義されていますが、保険として */
+    padding: 6rem 1rem; /* 既にsectionで定義されていますが、保険として */
 }
 
 /* もしHTMLで .dark-bg クラスを使用している場合は、以下のスタイルも追加します */
