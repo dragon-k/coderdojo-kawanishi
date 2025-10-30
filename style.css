@@ -142,20 +142,17 @@ section {
 }
 .about-card {
     background: white;
-    padding: 2rem;
+    /* padding: 2rem;  <= これを削除。代わりにHTMLで p-4 を使います。 */
+    padding: 0; /* Bootstrapのp-4を優先するため、カスタムCSSではパディングをリセット */
     border-radius: 1rem;
     box-shadow: 0 4px 10px var(--shadow);
     text-align: center;
-    /* ★修正点★: Bootstrapグリッドを使うため、flex関連のスタイルは削除またはコメントアウト */
-    /* width: 100%; を使用して、col-lg-4の幅を尊重 */
+    /* widthやflex関連のカスタムスタイルは削除した状態を維持 */
 }
 .about-card h3 {
     color: var(--accent-blue);
     font-size: 1.3rem;
     margin-top: 0;
-}
-.card-group {
-    margin-top: 4rem;
 }
 
 /* イベントカード */
