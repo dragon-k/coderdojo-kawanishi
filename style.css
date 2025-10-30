@@ -99,7 +99,7 @@ section {
     background-color: var(--accent-blue);
     
     /* 背景画像の設定 - 画像パスが正しいか確認してください！ */
-    background-image: url('Images/coderdojo_kawanishi.jpg'); /* style.cssと同じフォルダにある場合 */
+    background-image: url('Images/coderdojo_kawanishi.png'); /* style.cssと同じフォルダにある場合 */
     /* 例: 別のimagesフォルダにある場合 -> url('images/coderdojo_kawanishi.png'); */
 
     background-size: cover;
