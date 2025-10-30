@@ -1,14 +1,14 @@
 :root {
   --main-bg: #fdfdfd;
-  --accent: #a8dadc; /* 水色 */
-  --sub-accent: #b8e0d2; /* 薄緑 */
+  --accent: #a8dadc;
+  --sub-accent: #b8e0d2;
   --text: #333;
-  --soft-beige: #f5ede0; /* 元のイベントセクションの色 */
-  
-  /* ★追加・確認★ CoderDojoカラーとセクション背景色 */
-  --accent-blue: #008080; /* CoderDojoカラー */
-  --section-light: #e6f3f3; /* 薄い青背景 */
-  --text-light: #fdfdfd; /* 白文字 */ 
+  --soft-beige: #f5ede0;
+
+  /* ★追加・修正★ ヒーローセクションで使用する変数を定義 */
+  --accent-blue: #008080; /* CoderDojoカラー（縁取り用） */
+  --text-light: #fdfdfd; /* 白文字 */
+  --text-dark: #333; 
 }
 
 /* 基本スタイル */
@@ -70,11 +70,8 @@ nav a:hover {
 
 /* セクション共通 */
 section {
-  padding: 6rem 1rem;
-  max-width: 900px;
-  margin: 0 auto;
-  /* ★修正★ Bootstrapの影響でtext-alignが消えることがあるため、再設定 */
-  text-align: center; 
+  padding: 5rem 1rem;
+  text-align: center;
 }
 
 .section-title {
@@ -103,7 +100,7 @@ section {
     
     /* 背景画像の設定 - 画像パスが正しいか確認してください！ */
     background-image: url('Images/coderdojo_kawanishi.png'); /* style.cssと同じフォルダにある場合 */
-    /* 例: 別のimagesフォルダにある場合 -> url('images/coderdojo_kawanishi.png'); */
+    /* 例: 別のimagesフォルダにある場合 -> url('Images/coderdojo_kawanishi.png'); */
 
     background-size: cover;
     background-position: center;
@@ -169,15 +166,7 @@ section {
 
 /* CoderDojo概要 (Dojo理念) */
 .about-section {
-    /* ★修正★ 背景色が白にならないよう、元の色を指定 */
-    background-color: var(--section-light); /* または var(--sub-accent) など、お好みの色を */
-    padding: 6rem 1rem; /* 既にsectionで定義されていますが、保険として */
-}
-
-/* もしHTMLで .dark-bg クラスを使用している場合は、以下のスタイルも追加します */
-.about-section.dark-bg {
-    background-color: #333; /* または var(--text-dark) など、濃い色 */
-    color: var(--text-light);
+    background: var(--section-light);
 }
 .about-section h2 {
     color: var(--text-dark);
@@ -200,8 +189,7 @@ section {
 
 /* イベントカード */
 .events-section {
-  background: var(--soft-beige);
-  text-align: center;
+  background: white;
 }
 
 .event-card {
