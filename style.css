@@ -1,11 +1,14 @@
 :root {
   --main-bg: #fdfdfd;
-  --accent-blue: #008080; /* CoderDojoらしい青緑 */
-  --accent-light: #52b8b8;
-  --text-dark: #333;
-  --text-light: #fdfdfd;
-  --section-light: #e6f3f3; /* 薄い青背景 */
-  --shadow: rgba(0,0,0,0.1);
+  --accent: #a8dadc;
+  --sub-accent: #b8e0d2;
+  --text: #333;
+  --soft-beige: #f5ede0;
+
+  /* ★追加・修正★ ヒーローセクションで使用する変数を定義 */
+  --accent-blue: #008080; /* CoderDojoカラー（縁取り用） */
+  --text-light: #fdfdfd; /* 白文字 */
+  --text-dark: #333; 
 }
 
 /* 基本スタイル */
@@ -92,9 +95,20 @@ section {
 
 /* ヒーローセクション */
 .hero-section {
-    background: var(--accent-blue);
-    color: var(--text-light);
+    /* 代替背景色 (画像が読み込めない場合) */
+    background-color: var(--accent-blue);
+    
+    /* 背景画像の設定 - 画像パスが正しいか確認してください！ */
+    background-image: url('Images/coderdojo_kawanishi.jpg'); /* style.cssと同じフォルダにある場合 */
+    /* 例: 別のimagesフォルダにある場合 -> url('images/coderdojo_kawanishi.jpg'); */
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    color: var(--text-light); /* 文字色を白に設定 */
     padding: 6rem 1rem;
+    text-align: center; /* 文字を中央揃えに */
 }
 
 .hero-title {
@@ -102,11 +116,28 @@ section {
     line-height: 1.4;
     margin-bottom: 1.5rem;
     font-weight: bold;
+    color: var(--text-light);
+
+    /* ★文字の縁取りを再現 (太字の白文字に青緑の縁取り) */
+    text-shadow: 
+        -1px -1px 0 var(--accent-blue), 
+        1px -1px 0 var(--accent-blue),  
+        -1px 1px 0 var(--accent-blue),   
+        1px 1px 0 var(--accent-blue),    
+        0px 0px 8px rgba(0, 0, 0, 0.5); /* 濃い影（オプション） */
 }
 
 .hero-subtitle {
     font-size: 1.2rem;
     margin-bottom: 3rem;
+    color: var(--text-light);
+
+    /* ★文字の縁取りを再現 */
+    text-shadow: 
+        -0.5px -0.5px 0 var(--accent-blue), 
+        0.5px -0.5px 0 var(--accent-blue),  
+        -0.5px 0.5px 0 var(--accent-blue),   
+        0.5px 0.5px 0 var(--accent-blue);
 }
 
 /* CTAボタン */
