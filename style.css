@@ -165,6 +165,10 @@ section {
 }
 
 /* CoderDojo概要 (Dojo理念) */
+.about-dojo {
+  background: #AFDFE4;
+}
+
 .about-section {
     background: var(--section-light);
 }
