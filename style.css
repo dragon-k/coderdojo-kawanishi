@@ -9,6 +9,7 @@
   --accent-blue: #008080; /* CoderDojoカラー（縁取り用） */
   --text-light: #fdfdfd; /* 白文字 */
   --text-dark: #333; 
+  --about-bg: #e0ffff;
 }
 
 /* 基本スタイル */
@@ -165,12 +166,8 @@ section {
 }
 
 /* CoderDojo概要 (Dojo理念) */
-.about-dojo {
-  background: #AFDFE4;
-}
-
 .about-section {
-    background: var(--section-light);
+    background-color: var(--about-bg);
 }
 .about-section h2 {
     color: var(--text-dark);
